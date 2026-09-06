@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Barbearia Navalha & Estilo - Industrial Urbano</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Fontes Google (Oswald para títulos industriais & Inter para texto) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Oswald:wght@500;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        industrial: {
+                            yellow: '#F2C94C',       /* Amarelo Industrial exato do protótipo */
+                            yellowHover: '#E0B638',
+                            darkBg: '#1B1B1D',       /* Grafite escuro */
+                            cardBg: '#28282A',       /* Bloco escuro de teste/serviço */
+                            lightBg: '#F4F4F6',      /* Fundo claro para seção de serviços */
+                            concrete: '#3A3A3C',     /* Cinza Concreto do Rodapé */
+                            border: '#E0E0E0'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        display: ['Oswald', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        .font-display { font-family: 'Oswald', sans-serif; }
+        
+        /* Textura sutil de concreto no rodapé conforme a imagem original */
+        .bg-concrete-texture {
+            background-color: #3A3A3C;
+            background-image: radial-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 0);
+            background-size: 16px 16px;
+        }
+
+        .img-industrial {
+            filter: grayscale(100%) contrast(115%);
+            transition: filter 0.4s ease;
+        }
+        .img-industrial:hover {
+            filter: grayscale(0%) contrast(100%);
+        }
+    </style>
+</head>
+<body class="bg-industrial-darkBg text-gray-100 font-sans antialiased selection:bg-industrial-yellow selection:text-black">
+
+    <!-- NAVBAR (Header estilo Industrial Urbano) -->
+    <header class="bg-[#1B1B1D] border-b border-zinc-800 sticky top-0 z-40">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <!-- Logo Barbearia -->
+            <a href="#" class="flex items-center gap-2 group">
+                <div class="w-8 h-8 bg-industrial-yellow flex items-center justify-center font-display font-bold text-black text-xl">
+                    N
+                </div>
+                <div class="leading-tight">
+                    <span class="font-display font-bold text-xl tracking-wider text-white block uppercase">BARBEARIA</span>
+                    <span class="text-[10px] text-gray-400 font-medium tracking-widest block uppercase -mt-1">Navalha & Estilo</span>
+                </div>
+            </a>
+
+            <!-- Menu de Navegação -->
+            <nav class="hidden md:flex items-center gap-8 text-sm font-semibold tracking-wide uppercase text-gray-300">
+                <a href="#hero" class="hover:text-industrial-yellow transition-colors">Home</a>
+                <a href="#sobre" class="hover:text-industrial-yellow transition-colors">Sobre</a>
+                <a href="#servicos" class="hover:text-industrial-yellow transition-colors">Serviços</a>
+                <a href="#contato" class="hover:text-industrial-yellow transition-colors">Contato</a>
+            </nav>
+
+            <!-- Botão Agendar Superior -->
+            <button onclick="openBookingModal()" class="bg-industrial-yellow hover:bg-industrial-yellowHover text-black font-display font-bold px-6 py-2 uppercase text-sm tracking-wider transition-all">
+                Agendar
+            </button>
+        </div>
+    </header>
+
+    <main>
+        <!-- SEÇÃO HERO / BANNER PRINCIPAL (Exatamente como a imagem "Industrial Urbano") -->
+        <section id="hero" class="relative bg-industrial-darkBg overflow-hidden border-b border-zinc-800">
+            <!-- Hero Top Header Banner -->
+            <div class="relative w-full h-[380px] sm:h-[480px] bg-black overflow-hidden">
+                <!-- Imagem do Degradê / Cut em Alta Resolução (P&B Industrial) -->
+                <img src="https://images.unsplash.com/photo-1622286342621-4bd786c2447c?auto=format&fit=crop&q=80&w=1600" 
+                     alt="Corte degradê de alta precisão" 
+                     class="w-full h-full object-cover object-top img-industrial opacity-90">
+                
+                <!-- Overlay Gradiente e Título em Texto Grande Branco -->
+                <div class="absolute inset-0 bg-gradient-to-t from-[#1B1B1D] via-black/40 to-transparent flex flex-col justify-end p-6 sm:p-12 max-w-7xl mx-auto">
+                    <h1 class="font-display text-5xl sm:text-7xl font-bold uppercase tracking-tight text-white leading-none max-w-3xl">
+                        AGENDAR AGORA
+                    </h1>
+                    <p class="font-display text-xl sm:text-2xl text-industrial-yellow uppercase tracking-widest mt-2">
+                        Corte na régua, resenha de primeira.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Bloco de Conteúdo Texto + Faixa Amarela + Galeria 3 Imagens -->
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+                <div class="grid lg:grid-cols-12 gap-8 items-stretch">
+                    
+                    <!-- Lado Esquerdo: Texto da Seção Hero + CTA -->
+                    <div class="lg:col-span-5 space-y-6 flex flex-col justify-between">
+                        <div>
+                            <p class="text-gray-300 text-base leading-relaxed">
+                                Cansado daquele tapa no visual meia-boca? Aqui na <strong class="text-white">Barbearia Navalha & Estilo</strong>, a gente cuida da sua barba e do seu cabelo enquanto você relaxa, troca uma ideia e toma uma bem gelada.
+                            </p>
+
+                            <!-- Lista em Destaque -->
+                            <ul class="mt-6 space-y-3 text-sm font-medium text-gray-200">
+                                <li class="flex items-center gap-3">
+                                    <span class="w-2 h-2 bg-industrial-yellow"></span>
+                                    Cortes modernos e clássicos
+                                </li>
+                                <li class="flex items-center gap-3">
+                                    <span class="w-2 h-2 bg-industrial-yellow"></span>
+                                    Barba com toalha quente e massagem
+                                </li>
+                                <li class="flex items-center gap-3">
+                                    <span class="w-2 h-2 bg-industrial-yellow"></span>
+                                    Garantia de sair no estilo pra qualquer rolê
+                                </li>
+                            </ul>
+                        </div>
+
+                        <!-- Botão Amarelo de Agendamento -->
+                        <div>
+                            <button onclick="openBookingModal()" class="w-full sm:w-auto bg-industrial-yellow hover:bg-industrial-yellowHover text-black font-display font-bold text-lg uppercase px-8 py-4 tracking-wider transition-all shadow-md flex items-center justify-center gap-3">
+                                <i class="fa-solid fa-calendar-check"></i>
+                                AGENDAR MEU HORÁRIO
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Lado Direito: Bloco Amarelo Sobreposto + 3 Fotos (Navalha, Cerveja, Fade) -->
+                    <div class="lg:col-span-7 flex flex-col sm:flex-row gap-3">
+                        <!-- Tarja Visual Amarela Industrial -->
+                        <div class="bg-industrial-yellow w-full sm:w-20 p-4 flex sm:flex-col justify-center items-center text-black font-display font-bold text-lg uppercase tracking-wider text-center shrink-0">
+                            <span>N</span><span>&</span><span>E</span>
+                        </div>
+
+                        <!-- Grid com as 3 Fotos idênticas ao mockup -->
+                        <div class="grid grid-cols-3 gap-3 w-full">
+                            <!-- Foto 1: Navalha / Lâmina -->
+                            <div class="bg-black aspect-square overflow-hidden group border border-zinc-800 relative">
+                                <img src="https://images.unsplash.com/photo-1503951914875-452162b0f3f1?auto=format&fit=crop&q=80&w=600" 
+                                     alt="Navalha clássica de barbearia" 
+                                     class="w-full h-full object-cover img-industrial">
+                                <div class="absolute bottom-0 inset-x-0 bg-black/70 p-1 text-center">
+                                    <span class="text-[10px] font-display uppercase tracking-widest text-industrial-yellow block">Navalha</span>
+                                </div>
+                            </div>
+
+                            <!-- Foto 2: Cerveja Trincando -->
+                            <div class="bg-black aspect-square overflow-hidden group border border-zinc-800 relative">
+                                <img src="https://images.unsplash.com/photo-1535958636474-b021ee887b13?auto=format&fit=crop&q=80&w=600" 
+                                     alt="Cerveja gelada no copo" 
+                                     class="w-full h-full object-cover img-industrial">
+                                <div class="absolute bottom-0 inset-x-0 bg-black/70 p-1 text-center">
+                                    <span class="text-[10px] font-display uppercase tracking-widest text-industrial-yellow block">Cerveja</span>
+                                </div>
+                            </div>
+
+                            <!-- Foto 3: Detalhe do Corte / Pezinho -->
+                            <div class="bg-black aspect-square overflow-hidden group border border-zinc-800 relative">
+                                <img src="https://images.unsplash.com/photo-1599351431202-1e0f0137899a?auto=format&fit=crop&q=80&w=600" 
+                                     alt="Detalhe de corte masculino degradê" 
+                                     class="w-full h-full object-cover img-industrial">
+                                <div class="absolute bottom-0 inset-x-0 bg-black/70 p-1 text-center">
+                                    <span class="text-[10px] font-display uppercase tracking-widest text-industrial-yellow block">Estilo</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- SEÇÃO SOBRE NÓS -->
+        <section id="sobre" class="py-14 bg-zinc-900 border-b border-zinc-800 text-gray-200">
+            <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-4">
+                <span class="bg-industrial-yellow text-black font-display font-bold text-xs uppercase px-3 py-1 inline-block tracking-widest">
+                    PONTO DE ENCONTRO
+                </span>
+                <h2 class="font-display text-3xl sm:text-4xl font-bold uppercase text-white tracking-wide">
+                    Mais que uma barbearia, <span class="text-industrial-yellow">o seu ponto de encontro.</span>
+                </h2>
+                <p class="text-gray-300 text-base sm:text-lg max-w-3xl mx-auto leading-relaxed">
+                    A gente criou um espaço pensando no seu conforto. Nada de fila de espera chata ou clima frio: aqui tem sinuca, cerveja trincando, café fresco e os melhores barbeiros da região prontos pra mandar aquele americano, pompadour ou degradê de respeito.
+                </p>
+            </div>
+        </section>
+
+        <!-- SEÇÃO SERVIÇOS E PREÇOS (Cards Claros com Topo Amarelo igual ao protótipo) -->
+        <section id="servicos" class="py-16 bg-industrial-lightBg text-black">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                
+                <div class="text-center max-w-2xl mx-auto mb-12">
+                    <h2 class="font-display text-4xl font-bold uppercase tracking-wider text-black">
+                        SERVIÇOS
+                    </h2>
+                    <div class="w-16 h-1 bg-industrial-yellow mx-auto mt-2"></div>
+                </div>
+
+                <!-- Grid de 3 Colunas com Cabeçalho Amarelo -->
+                <div class="grid md:grid-cols-3 gap-8 items-start">
+                    
+                    <!-- Coluna 1: Corte de Cabelo -->
+                    <div class="bg-white border border-gray-300 shadow-md">
+                        <div class="bg-industrial-yellow p-4 text-center border-b border-gray-300">
+                            <h3 class="font-display text-2xl font-bold uppercase text-black">CABELO NO ESTILO</h3>
+                            <span class="font-display text-xl font-bold text-black">R$ 45</span>
+                        </div>
+                        <div class="p-6 text-gray-700 text-center space-y-4">
+                            <p class="text-sm leading-relaxed">
+                                O degradê perfeito com acabamento na navalha.
+                            </p>
+                            <button onclick="openBookingModal('Cabelo no Estilo')" class="w-full bg-black hover:bg-zinc-800 text-white font-display font-bold text-xs uppercase py-3 tracking-wider transition-colors">
+                                Agendar Corte
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Coluna 2: Combo Supremo (Destaque Principal) -->
+                    <div class="bg-white border-2 border-black shadow-xl transform md:-translate-y-2">
+                        <div class="bg-industrial-yellow p-5 text-center border-b border-black">
+                            <span class="bg-black text-industrial-yellow text-[10px] font-bold uppercase tracking-widest px-2 py-0.5 inline-block mb-1">
+                                O MAIS PEDIDO
+                            </span>
+                            <h3 class="font-display text-2xl font-bold uppercase text-black">COMBO SUPREMO</h3>
+                            <p class="text-xs font-bold uppercase text-gray-800">(Cabelo + Barba)</p>
+                            <span class="font-display text-3xl font-extrabold text-black block mt-1">R$ 70</span>
+                        </div>
+                        <div class="p-6 text-gray-800 text-center space-y-4">
+                            <p class="text-sm font-medium leading-relaxed">
+                                O pacote completo pra sair pronto pro fim de semana.
+                            </p>
+                            <button onclick="openBookingModal('Combo Supremo (Cabelo + Barba)')" class="w-full bg-industrial-yellow hover:bg-industrial-yellowHover text-black font-display font-bold text-sm uppercase py-3.5 tracking-wider transition-all shadow-md">
+                                GARANTIR VAGA NO COMBO
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Coluna 3: Barba & Pai e Filho -->
+                    <div class="bg-white border border-gray-300 shadow-md">
+                        <div class="bg-industrial-yellow p-4 text-center border-b border-gray-300">
+                            <h3 class="font-display text-2xl font-bold uppercase text-black">OUTROS SERVIÇOS</h3>
+                            <span class="font-display text-sm font-bold text-black uppercase">Barba & Família</span>
+                        </div>
+                        <div class="p-6 text-gray-700 space-y-4">
+                            <div class="border-b border-gray-200 pb-3">
+                                <div class="flex justify-between font-display font-bold text-base text-black">
+                                    <span>BARBA DE RESPEITO</span>
+                                    <span class="text-industrial-yellow bg-black px-1.5 py-0.5 text-xs">R$ 35</span>
+                                </div>
+                                <p class="text-xs text-gray-600 mt-1">Desenhada, com toalha quente e óleos hidratantes.</p>
+                            </div>
+                            <div>
+                                <div class="flex justify-between font-display font-bold text-base text-black">
+                                    <span>PAI & FILHO</span>
+                                    <span class="text-industrial-yellow bg-black px-1.5 py-0.5 text-xs">R$ 75</span>
+                                </div>
+                                <p class="text-xs text-gray-600 mt-1">Venham juntos e garantam o visual da família.</p>
+                            </div>
+                            <button onclick="openBookingModal('Barba de Respeito')" class="w-full bg-black hover:bg-zinc-800 text-white font-display font-bold text-xs uppercase py-3 tracking-wider transition-colors mt-2">
+                                Agendar Barba
+                            </button>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+
+        <!-- SEÇÃO DEPOIMENTOS (Escura com imagem lateral de corte de cabelo) -->
+        <section class="bg-industrial-darkBg border-t border-b border-zinc-800">
+            <div class="grid lg:grid-cols-12 items-stretch">
+                
+                <!-- Foto em Ação do Barbeiro (Lado Esquerdo, idêntico à imagem) -->
+                <div class="lg:col-span-5 relative min-h-[300px] lg:min-h-[420px]">
+                    <img src="https://images.unsplash.com/photo-1585747860715-2ba37e788b70?auto=format&fit=crop&q=80&w=1000" 
+                         alt="Barbeiro realizando atendimento de cabelo e barba" 
+                         class="w-full h-full object-cover img-industrial">
+                </div>
+
+                <!-- Bloco de Depoimentos (Lado Direito em fundo grafite escuro) -->
+                <div class="lg:col-span-7 bg-industrial-cardBg p-8 sm:p-12 flex flex-col justify-center space-y-8">
+                    <div>
+                        <span class="font-display font-bold text-industrial-yellow text-sm uppercase tracking-widest block mb-1">
+                            DEPOIMENTOS DE CLIENTES
+                        </span>
+                        <h2 class="font-display text-3xl font-bold uppercase text-white">
+                            TESTIMONIAL
+                        </h2>
+                    </div>
+
+                    <div class="space-y-6">
+                        <!-- Depoimento 1 -->
+                        <div class="border-l-2 border-industrial-yellow pl-4">
+                            <p class="text-gray-300 italic text-sm sm:text-base leading-relaxed">
+                                "Os caras mandam bem demais! Além do corte ficar insanamente bom, a resenha é top e a cerveja tá sempre trincando."
+                            </p>
+                            <span class="font-display font-bold text-white text-sm uppercase block mt-2 tracking-wider">
+                                — Lucas M.
+                            </span>
+                        </div>
+
+                        <!-- Depoimento 2 -->
+                        <div class="border-l-2 border-industrial-yellow pl-4">
+                            <p class="text-gray-300 italic text-sm sm:text-base leading-relaxed">
+                                "Melhor barba da cidade, sem dúvida. O esquema da toalha quente é bom demais pra relaxar depois do trampo."
+                            </p>
+                            <span class="font-display font-bold text-white text-sm uppercase block mt-2 tracking-wider">
+                                — Rafael S.
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- SEÇÃO RODAPÉ / CONTATO -->
+        <section id="contato" class="py-12 bg-zinc-900 border-b border-zinc-800">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid md:grid-cols-2 gap-8 items-center">
+                    <div>
+                        <h2 class="font-display text-3xl font-bold uppercase text-white">
+                            Bora dar aquele <span class="text-industrial-yellow">tapa no visual?</span>
+                        </h2>
+                        <p class="text-gray-400 text-sm mt-2">
+                            Atendemos de terça a sábado, das 09h às 20h.
+                        </p>
+                        
+                        <div class="mt-6 space-y-3 text-sm text-gray-300">
+                            <p class="flex items-center gap-3">
+                                <i class="fa-solid fa-location-dot text-industrial-yellow"></i>
+                                Endereço: Rua dos Barbeiros, 123 - Centro
+                            </p>
+                            <p class="flex items-center gap-3">
+                                <i class="fa-brands fa-whatsapp text-industrial-yellow"></i>
+                                WhatsApp: (00) 99999-8888
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Card de Chamada para WhatsApp -->
+                    <div class="bg-industrial-cardBg p-6 border border-zinc-700 text-center space-y-4">
+                        <h3 class="font-display font-bold uppercase text-white text-lg">Agendamento Direto no Zap</h3>
+                        <a href="https://wa.me/5500999998888?text=Ol%C3%A1!%20Gostaria%20de%20agendar%20um%20hor%C3%A1rio%20na%20Barbearia%20Navalha%20%26%20Estilo." 
+                           target="_blank" 
+                           class="inline-block w-full bg-industrial-yellow hover:bg-industrial-yellowHover text-black font-display font-bold text-sm uppercase py-3 tracking-wider transition-colors">
+                            <i class="fa-brands fa-whatsapp text-lg mr-2"></i>
+                            CHAMAR NO WHATSAPP
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- RODAPÉ FINAL (Textura Concreto + Créditos idênticos à imagem) -->
+    <footer class="bg-concrete-texture py-8 text-center border-t border-zinc-700">
+        <div class="max-w-7xl mx-auto px-4">
+            <h3 class="font-display font-bold text-industrial-yellow text-xl tracking-wider uppercase">
+                Demonstração de Landing page - Miguel Alves
+            </h3>
+            <p class="text-xs text-gray-400 mt-1 uppercase tracking-widest">
+                Design Industrial Urbano • Projeto Fictício para Apresentação
+            </p>
+        </div>
+    </footer>
+
+    <!-- MODAL DE AGENDAMENTO -->
+    <div id="bookingModal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm hidden items-center justify-center p-4">
+        <div class="bg-industrial-darkBg border-2 border-industrial-yellow w-full max-w-md p-6 relative text-white shadow-2xl">
+            <!-- Fechar -->
+            <button onclick="closeBookingModal()" class="absolute top-4 right-4 text-gray-400 hover:text-white text-xl">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+
+            <div class="mb-6">
+                <span class="text-industrial-yellow font-display font-bold text-xs uppercase tracking-wider block">Agendamento Rápido</span>
+                <h3 class="font-display text-2xl font-bold uppercase text-white">Garanta o Seu Horário</h3>
+            </div>
+
+            <form onsubmit="handleBookingSubmit(event)" class="space-y-4">
+                <div>
+                    <label class="block text-xs uppercase font-bold text-gray-300 mb-1">Seu Nome</label>
+                    <input type="text" required placeholder="Digite seu nome" class="w-full bg-black border border-zinc-700 px-4 py-2 text-sm text-white focus:outline-none focus:border-industrial-yellow">
+                </div>
+
+                <div>
+                    <label class="block text-xs uppercase font-bold text-gray-300 mb-1">Serviço Desejado</label>
+                    <select id="modalServiceSelect" class="w-full bg-black border border-zinc-700 px-4 py-2 text-sm text-white focus:outline-none focus:border-industrial-yellow">
+                        <option value="Combo Supremo (Cabelo + Barba)">Combo Supremo (Cabelo + Barba) - R$ 70</option>
+                        <option value="Cabelo no Estilo">Cabelo no Estilo - R$ 45</option>
+                        <option value="Barba de Respeito">Barba de Respeito - R$ 35</option>
+                        <option value="Pai & Filho">Pai & Filho - R$ 75</option>
+                    </select>
+                </div>
+
+                <div class="grid grid-cols-2 gap-3">
+                    <div>
+                        <label class="block text-xs uppercase font-bold text-gray-300 mb-1">Data</label>
+                        <input type="date" required class="w-full bg-black border border-zinc-700 px-3 py-2 text-sm text-white focus:outline-none focus:border-industrial-yellow">
+                    </div>
+                    <div>
+                        <label class="block text-xs uppercase font-bold text-gray-300 mb-1">Horário</label>
+                        <select class="w-full bg-black border border-zinc-700 px-3 py-2 text-sm text-white focus:outline-none focus:border-industrial-yellow">
+                            <option>09:00</option>
+                            <option>10:30</option>
+                            <option>14:00</option>
+                            <option>16:00</option>
+                            <option>18:30</option>
+                        </select>
+                    </div>
+                </div>
+
+                <button type="submit" class="w-full bg-industrial-yellow hover:bg-industrial-yellowHover text-black font-display font-bold text-sm uppercase py-3.5 tracking-wider transition-colors mt-2">
+                    CONFIRMAR AGENDAMENTO VIA WHATSAPP
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        function openBookingModal(serviceName) {
+            const modal = document.getElementById('bookingModal');
+            const select = document.getElementById('modalServiceSelect');
+            
+            if (serviceName && select) {
+                for (let i = 0; i < select.options.length; i++) {
+                    if (select.options[i].value.includes(serviceName)) {
+                        select.selectedIndex = i;
+                        break;
+                    }
+                }
+            }
+            
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+        }
+
+        function closeBookingModal() {
+            const modal = document.getElementById('bookingModal');
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+        }
+
+        function handleBookingSubmit(event) {
+            event.preventDefault();
+            const service = document.getElementById('modalServiceSelect').value;
+            window.open('https://wa.me/5500999998888?text=Ol%C3%A1!%20Quero%20agendar%20o%20servi%C3%A7o%20' + encodeURIComponent(service), '_blank');
+            closeBookingModal();
+        }
+
+        window.onclick = function(event) {
+            const modal = document.getElementById('bookingModal');
+            if (event.target === modal) {
+                closeBookingModal();
+            }
+        }
+    </script>
+</body>
+</html>
